@@ -1,0 +1,161 @@
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Home Button Styling */
+.home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #ffd700; /* Mexican-inspired gold */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.home-button:hover {
+    background-color: #ce1126; /* Red on hover */
+    color: white;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f3e9;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    border-top-left-radius: 20%;
+    text-align: center;
+    padding: 20px;
+    background-color: #006341; /* Mexican flag green */
+    color: white;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to header */
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #ffd700; /* Mexican-inspired gold for the title */
+}
+
+/* Button Container Styling */
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Always two equal-width columns */
+    gap: 10px;
+    padding: 15px;
+}
+
+/* Food Button Styling */
+.food-button {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-size: 1.5em;
+    text-align: center;
+    background-color: #8c2f39; /* Mexican flag red */
+    color: white;
+    text-decoration: none;
+    border: 2px solid #ffd700; /* Gold border for buttons */
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    white-space: nowrap; /* Prevents words from breaking mid-word */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adds "..." if text overflows */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow to buttons */
+}
+
+.food-button:hover {
+    background-color: #f5d7ba; /* Lighter gold for hover effect */
+    color: #8c2f39;
+    transform: scale(1.05); /* Slightly enlarges button on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Ensuring that text shrinks responsively */
+.food-button {
+    font-size: clamp(1em, 4vw, 1.5em); /* Text size will shrink and grow dynamically */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #ce1126; /* Mexican flag red */
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 1em;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Add shadow to footer */
+}
+
+/* Mobile Styles for Very Small Screens */
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1.6em; /* Smaller title */
+    }
+
+    .button-container {
+        grid-template-columns: repeat(2, 1fr); /* Ensure two columns */
+        gap: 5px; /* Smaller gap between buttons */
+    }
+
+    .food-button {
+        font-size: clamp(0.8em, 4vw, 1em); /* Text shrinks responsively */
+        padding: 10px; /* Compressed padding for buttons */
+    }
+
+    .home-button {
+        padding: 6px 12px; /* Smaller home button */
+        font-size: 0.8em; /* Smaller font size for home button */
+    }
+    
+    footer {
+        padding: 5px; /* Smaller footer padding */
+        font-size: 0.8em; /* Smaller footer font size */
+    }
+}
+
+/* Mobile Styles for Small Screens */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.8em; /* Slightly smaller title */
+    }
+
+    .button-container {
+        grid-template-columns: repeat(2, 1fr); /* Ensure two columns */
+        gap: 10px; /* Small gap between buttons */
+    }
+
+    .food-button {
+        font-size: clamp(1em, 4vw, 1.2em); /* Font will shrink and expand as the screen resizes */
+        padding: 12px; /* Compressed padding for buttons */
+    }
+
+    .home-button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+    
+    footer {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}

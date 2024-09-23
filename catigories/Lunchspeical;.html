@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <style>
+        /* Styling for special instructions textarea */
+        .special-instructions {
+            width: 100%;
+            height: 30px; /* Small initial height */
+            padding: 10px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none;
+            transition: height 0.3s ease;
+            overflow: hidden;
+        }
+
+        .special-instructions:focus {
+            height: 100px; /* Expand on focus */
+            border-color: #ce1126; /* Red border on focus */
+            outline: none;
+        }
+
+        #success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50; /* Success green */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <img src="/anitas logo.png" class="logo"></img>
+        <div id="success-message">Item successfully added to cart!</div>
+        <h1>Anitas</h1>
+      
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Lunch Special</h2>
+        <h3 class="times">Monday-Friday 11:00 AM - 3:00 PM</h3>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="/photos/burrito.png" alt="Lunch Special">
+                <h3>Lunch Special</h3>
+                <p class="description"</p>
+                <p class="price">$9.99</p>
+
+             
+                <button class="add-to-cart" data-name="#1 Chile Relleno & Guacamole" data-price="9.99" data-instructions-id="instructions-1">#1 Chile Relleno & Guacamole</button>
+                <button class="add-to-cart" data-name="#2 One Burrito, Rice, and Refried Beans" data-price="9.99" data-instructions-id="instructions-1">#2 One Burrito, Rice, and Refried Beans</button>
+                <button class="add-to-cart" data-name="#3 One Bean Burrito, Cheese Enchiladas, and Rice" data-price="9.99" data-instructions-id="instructions-1">#3 One Bean Burrito, Cheese Enchiladas, and Rice</button>
+                <button class="add-to-cart" data-name="#4 One Beef Enchilada, One Taco, Rice, and Beans" data-price="9.99" data-instructions-id="instructions-1">#4 One Beef Enchilada, One Taco, Rice, and Beans</button>
+                <button class="add-to-cart" data-name="#5 Two Beef Enchiladas, Rice, and Beans" data-price="9.99" data-instructions-id="instructions-1">#5 Two Beef Enchiladas, Rice, and Beans</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/chimi enchi.png" alt="Chimi Enchiladas">
+                <h3>Chimi Enchiladas</h3>
+                <p class="description">One chimichanga with your choice of chicken or beef, one beef Enchilada, rice and beans</p>
+                <p class="price">$8.99</p>
+                <textarea id="instructions-2" class="special-instructions" placeholder="Special instructions: No onions, extra cheese..."></textarea>
+                <button class="add-to-cart" data-name="Chimi Enchiladas" data-price="8.99" data-instructions-id="instructions-2">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+               
+                <h3>Jumbo Burrito</h3>
+                <p class="description">flour tortilla filled with chicken or beef, rice and beans. served with side of lettuce,cheese, sour cream and tomato</p>
+                <p class="price">$8.99</p>
+                <textarea id="instructions-3" class="special-instructions" placeholder="Special instructions: No onions, extra cheese..."></textarea>
+                <button class="add-to-cart" data-name="Jumbo Burrito/chicken" data-price="8.99" data-instructions-id="instructions-3">Chicken</button>
+                <button class="add-to-cart" data-name="Jumbo Burrito/beef" data-price="8.99" data-instructions-id="instructions-3">Beef</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script>
+        // Retrieve cart from localStorage or initialize it
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Function to update cart in localStorage
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Function to display success message
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+
+            // Hide message after 3 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        // Function to add items to cart
+        function addItemToCart(itemName, itemPrice, specialInstructions = '') {
+            const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+                existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+            } else {
+                const item = {
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: 1,
+                    totalPrice: itemPrice.toFixed(2),
+                    instructions: specialInstructions
+                };
+                cart.push(item);
+            }
+
+            // Update localStorage
+            updateCart();
+        }
+
+        // Handle adding to cart for all buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.getAttribute('data-name');
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = instructionsId ? document.getElementById(instructionsId).value.trim() : '';
+
+                addItemToCart(itemName, itemPrice, specialInstructions);
+
+                // Show success message
+                showSuccessMessage(`${itemName} added to your cart!`);
+            });
+        });
+    </script>
+</body>
+</html>

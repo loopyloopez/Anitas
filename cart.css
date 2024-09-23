@@ -1,0 +1,141 @@
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f3e9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    background-color: #006341; /* Mexican flag green */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Added shadow to header */
+}
+
+header h1 {
+    font-size: 3em;
+    color: #ffd700; /* Mexican-inspired gold */
+}
+
+/* Cart Section */
+.cart-section {
+    padding: 40px;
+    text-align: center;
+    background-color: white;
+    border: 2px solid #ffd700; /* Gold border */
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Box shadow for the cart section */
+}
+
+.cart-section #cart-items {
+    margin-bottom: 20px;
+}
+
+.cart-section .cart-item {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow around each item */
+    padding: 10px;
+    border-radius: 5px; /* Slightly rounded corners for each cart item */
+}
+
+.cart-section p {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ce1126; /* Mexican flag red */
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+.cart-section button {
+    padding: 10px 20px;
+    background-color: #ce1126; /* Mexican flag red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Shadow for buttons */
+}
+
+.cart-section button:hover {
+    background-color: #f5d7ba; /* Light gold on hover */
+    color: #ce1126; /* Red text on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.checkout-button {
+    padding: 10px 20px;
+    background-color: #006341; /* Green for checkout button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Shadow for buttons */
+}
+
+.checkout-button:hover {
+    background-color: #ffd700; /* Gold on hover */
+    color: #006341; /* Green text on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #ce1126; /* Mexican flag red */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 1em;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1); /* Shadow for footer */
+}
+
+/* Responsive Styles for Mobile Screens */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2em; /* Smaller header text on mobile */
+    }
+
+    .cart-section {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .cart-section p {
+        font-size: 1.2em;
+    }
+
+    .cart-section .cart-item {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    .cart-section button, .checkout-button {
+        padding: 8px 15px;
+        font-size: 1em;
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 0.9em;
+    }
+}

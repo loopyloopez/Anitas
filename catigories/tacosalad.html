@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Universal Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Header Styling */
+    
+
+        .home-button {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .home-button:hover {
+            color: #ffd700; /* Gold on hover */
+        }
+
+        h1 {
+            font-size: 2em;
+            text-transform: uppercase;
+        }
+
+        /* Cart Styling */
+        .view-cart {
+            color: white;
+            font-size: 1.5em;
+            position: relative;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .view-cart:hover {
+            color: #ffd700; /* Gold on hover */
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #ce1126; /* Red */
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            font-size: 0.8em;
+            line-height: 20px;
+            font-weight: bold;
+        }
+
+        /* Menu Section Styling */
+        .menu-section {
+            margin: 30px 0;
+        }
+
+        .menu-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #006341; /* Mexican green */
+        }
+
+        .menu-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .menu-item h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #006341; /* Mexican green */
+            text-align: center;
+        }
+
+        .description {
+            font-size: 1em;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #555;
+        }
+
+        .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ce1126; /* Red */
+        }
+
+        .add-to-cart {
+            background-color: #006341; /* Mexican green */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        .add-to-cart:hover {
+            background-color: #004d29; /* Darker green on hover */
+        }
+
+        /* Special Instructions Styling */
+      /* Special Instructions Styling */
+.special-instructions {
+    width: 100%;
+    height: 30px; /* Small initial height */
+    padding: 10px;
+    border: 2px solid #006341;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-top: 10px;
+    resize: none; /* Disable manual resizing */
+    transition: height 0.3s ease; /* Smooth transition on height */
+    overflow: hidden;
+}
+
+.special-instructions:focus {
+    border-color: #ce1126; /* Red border on focus */
+    height: 100px; /* Expanded height on focus */
+    outline: none;
+}
+
+/* Label styling */
+label {
+    align-self: flex-start;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+    
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Anitas</h1>
+       
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+        </a>
+        <!-- Success Message -->
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+    </header>
+
+    <section class="menu-section">
+        <h2>Taco Salad</h2>
+        <div class="menu-grid">
+            <!-- Menu Item 1 -->
+            <div class="menu-item">
+                <img src="../photos/taco salad fajitas.png">
+                <h3>Taco Salad Fajitas</h3>
+                <p class="description">a crispy flour bowl filled with greens,topped with your choice of chicken or steak satueed with onion, bell peppers and tomato, covered with lettuce, cheese, sour cream and gaucamole</p>
+                <p class="price">$10.99</p>
+                <button class="add-to-cart" data-name="Taco Salad Fajitas Steak" data-price="10.99" data-instructions-id="special-instructions-1">Steak</button>
+                <button class="add-to-cart" data-name="Taco Salad Fajitas Chicken" data-price="10.99" data-instructions-id="special-instructions-1">Chicken</button>
+
+                <!-- Special Instructions Input -->
+                <label for="special-instructions-1">Special Instructions:</label>
+                <textarea id="special-instructions-1" class="special-instructions" placeholder="e.g., No tomatoes, extra sour cream. (some demands might need further payments on site)"></textarea>
+            </div>
+
+            <!-- Menu Item 2 -->
+            <div class="menu-item">
+                <img src="../photos/taco salad.png" alt="Burrito">
+                <h3>Taco Salad</h3>
+                <p class="description">Crispy Flour Tortilla Bowl filled with Lettuce and Tomato, topped with your choice of Chicken or Beef. Served with Cheese, Guacamole, and Sour Cream.</p>
+                <p class="price">$8.99</p>
+                <button class="add-to-cart" data-name="Taco Salad Ground Beef" data-price="8.99" data-instructions-id="special-instructions-2">Ground Beef</button>
+                <button class="add-to-cart" data-name="Taco Salad Chicken" data-price="8.99" data-instructions-id="special-instructions-2">Chicken</button>
+
+                <!-- Special Instructions Input -->
+                <label for="special-instructions-2">Special Instructions:</label>
+                <textarea id="special-instructions-2" class="special-instructions" placeholder="e.g., No tomatoes, extra sour cream. (some demands might need further payments on site)"></textarea>
+            </div>
+
+            <!-- Add more menu items here -->
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script src="../shop.js"></script>
+</body>
+</html>

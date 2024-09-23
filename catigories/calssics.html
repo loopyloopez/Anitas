@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <style>
+        .special-instructions {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none; /* Disable manual resizing */
+            transition: height 0.3s ease;
+        }
+
+        .special-instructions:focus {
+            height: 100px; /* Expand on focus */
+            border-color: #ce1126; /* Red border on focus */
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+        <h1>Anitas</h1>
+    
+        <a href="../cartpage.html" class="view-cart">View Cart</a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Classics</h2>
+        <p class="times">Monday-Friday   11:00Am-3:00pm</p>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="/photos/chimiuo.png" alt="Tacos">
+                <h3>Chimichanga</h3>
+                <p class="description">Flour tortilla deep fried to a golden brown stuffed with chunks of chicken or beef, topped with cheese sauce, lettuce, sour cream, gaucamole and pico de gallo</p>
+                <p class="price">$9.99</p>
+                
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-1" class="special-instructions" placeholder="Special instructions: e.g., No tomatoes, extra cheese"></textarea>
+
+                <button class="add-to-cart" data-name="Chimichanga Chicken" data-price="9.99" data-instructions-id="special-instructions-1">Chicken</button>
+                <button class="add-to-cart" data-name="Chimichanga Beef" data-price="9.99" data-instructions-id="special-instructions-1">Beef</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/chimidos.png" alt="Burrito">
+                <h3>Chimi Steak</h3>
+                <p class="description">flour tortilla deep fried to a golden brown stuffed with steak and cheese, topped with cheese sauce, lettuce, sour cream, guacamole and pico de gallo </p>
+                <p class="price">$11.99</p>
+                
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-2" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra rice"></textarea>
+
+                <button class="add-to-cart" data-name="Chimi Steak" data-price="11.99" data-instructions-id="special-instructions-2">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+                
+                <h3>Quesadilla Loca</h3>
+                <p class="description">grilled chicken quasadilla, served with rice and beans</p>
+                <p class="price">$8.99</p>
+                
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-3" class="special-instructions" placeholder="Special instructions: e.g., No sour cream, extra salsa"></textarea>
+
+                <button class="add-to-cart" data-name="Quesadilla Loca" data-price="8.99" data-instructions-id="special-instructions-3">Add to Cart</button>
+            </div>
+
+            <!-- Add more menu items here -->
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script>
+        // Handle "Add to Cart" with special instructions
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.getAttribute('data-name');
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = document.getElementById(instructionsId).value.trim();
+
+                // Get the current cart from localStorage
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Check if the item with the same name and special instructions already exists in the cart
+                const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+                if (existingItem) {
+                    existingItem.quantity += 1; // Increase quantity if already exists
+                    existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+                } else {
+                    const item = {
+                        name: itemName,
+                        price: itemPrice,
+                        quantity: 1,
+                        totalPrice: itemPrice.toFixed(2),
+                        instructions: specialInstructions
+                    };
+                    cart.push(item);
+                }
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Show success message
+                alert(`${itemName} added to your cart with instructions: "${specialInstructions}"`);
+            });
+        });
+    </script>
+
+    <script src="../shop.js"></script>
+</body>
+</html>

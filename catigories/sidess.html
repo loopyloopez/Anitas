@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+</head>
+<body>
+
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+        <h1>Anitas</h1>
+       
+        <a href="../cartpage.html" class="view-cart">View Cart</a>
+        <style>
+            /* Universal Reset */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+    
+            /* Body Styling */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f7f3e9;
+                color: #333;
+                padding: 20px;
+                line-height: 1.6;
+            }
+    
+            /* Header Styling */
+            header {
+                text-align: center;
+                background-color: #006341; /* Mexican flag green */
+                color: white;
+                padding: 20px;
+            }
+    
+            header h1 {
+                font-size: 2.5em;
+              
+            }
+    
+            header p {
+                font-size: 1.2em;
+            }
+    
+            header .view-cart {
+                background-color: #ce1126; /* Mexican flag red */
+                color: white;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 5px;
+                font-size: 1.1em;
+                margin-top: 15px;
+                display: inline-block;
+                font-weight: bold;
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+    
+            header .view-cart:hover {
+                background-color: #006341; /* Green on hover */
+                color: white;
+            }
+    
+            /* Menu Section */
+            .menu-section {
+                padding: 40px;
+                text-align: center;
+            }
+    
+            .menu-section h2 {
+                font-size: 2.5em;
+                color: #ce1126; /* Mexican flag red */
+                margin-bottom: 30px;
+            }
+    
+            /* Sides Container Styling */
+            .sides {
+                background-color: white;
+                border: 2px solid #ffd700; /* Gold border */
+                border-radius: 10px;
+                padding: 20px;
+                text-align: left;
+                max-width: 400px;
+                margin: 0 auto;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+    
+            /* Sides Image */
+            .sides img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 10px;
+                margin-bottom: 15px;
+            }
+    
+            /* Label for Side Selection */
+            .sides label {
+                font-size: 1.1em;
+                color: #333;
+                font-weight: bold;
+                margin-bottom: 5px;
+                display: inline-block;
+            }
+    
+            /* Radio Button Styling */
+            .sides input[type="radio"] {
+                margin-right: 10px;
+            }
+    
+            /* Quantity Input Styling */
+            .sides input[type="number"] {
+                width: 50px;
+                padding: 5px;
+                font-size: 1em;
+                margin-left: 10px;
+                margin-bottom: 20px;
+            }
+    
+            /* Add to Cart Button */
+            .sides .add-to-cart {
+                background-color: #ce1126; /* Mexican flag red */
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 1.2em;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+    
+            .sides .add-to-cart:hover {
+                background-color: #006341; /* Green on hover */
+                color: white;
+            }
+    
+            /* Footer Styling */
+            footer {
+                background-color: #006341;
+                color: white;
+                text-align: center;
+                padding: 20px;
+                margin-top: 40px;
+                position: relative;
+                width: 100%;
+            }
+    
+            /* Media Queries for Mobile Screens */
+            @media (max-width: 600px) {
+                header h1 {
+                    font-size: 1.8em; /* Smaller font size for mobile */
+                }
+    
+                header p {
+                    font-size: 1em;
+                }
+    
+                .menu-section h2 {
+                    font-size: 2em; /* Smaller title for mobile */
+                }
+    
+                .sides {
+                    max-width: 100%; /* Full width on mobile */
+                    padding: 15px;
+                }
+    
+                .sides img {
+                    height: 150px; /* Smaller image for mobile */
+                }
+    
+                .sides label {
+                    font-size: 1em; /* Smaller label font for mobile */
+                }
+    
+                .sides input[type="number"] {
+                    font-size: 0.9em; /* Smaller font size for mobile */
+                    padding: 5px;
+                }
+    
+                .sides .add-to-cart {
+                    padding: 8px 15px; /* Smaller padding for button */
+                    font-size: 1em; /* Smaller font size for button */
+                }
+    
+                footer {
+                    padding: 15px;
+                    font-size: 0.9em; /* Smaller footer font size */
+                }
+            }
+        </style>
+    </header>
+
+    <section class="menu-section">
+        <h2>Sides</h2>
+        <div class="sides">
+            <img src="/photos/rice (2).png" alt="Sides">
+            <!-- Side Selection as radio buttons -->
+            <label>Choose your Side:</label><br>
+            <input type="radio" id="Sour Cream" name="side" value="Sour Cream" data-price="0.99" checked>
+            <label class="options" for="Sour Cream">Sour Cream ($0.99)</label><br>
+            
+            <input type="radio" id="Tortillas" name="side" value="Tortillas" data-price="1.25">
+            <label class="options" for="Tortillas">Tortillas ($1.25)</label><br>
+            
+            <input type="radio" id="Tomatoes" name="side" value="Tomatoes" data-price="0.99">
+            <label class="options" for="Tomatoes">Tomatoes ($0.99)</label><br>
+            
+            <input type="radio" id="Jalapenos" name="side" value="Jalapenos" data-price="1.99">
+            <label class="options" for="Jalapenos">Jalapenos ($1.99)</label><br>
+            
+            <input type="radio" id="Granted Cheese" name="side" value="Granted Cheese" data-price="1.99">
+            <label class="options" for="Granted Cheese">Granted Cheese ($1.99)</label><br>
+            
+            <input type="radio" id="Lettuce" name="side" value="Lettuce" data-price="0.99">
+            <label class="options" for="Lettuce">Lettuce ($0.99)</label><br>
+            
+            <input type="radio" id="Onions" name="side" value="Onions" data-price="0.99">
+            <label class="options" for="Onions">Onions ($0.99)</label><br>
+            
+            <input type="radio" id="French Fries" name="side" value="French Fries" data-price="2.99">
+            <label class="options" for="French Fries">French Fries ($2.99)</label><br>
+            
+            <input type="radio" id="Rice and Beans" name="side" value="Rice and Beans" data-price="4.99">
+            <label class="options" for="Rice and Beans">Rice and Beans ($4.99)</label><br>
+            
+            <input type="radio" id="chips and salsa" name="side" value="chips and salsa" data-price="4.99">
+            <label class="options" for="chips and salsa">Chips and Salsa ($4.99)</label><br>
+            
+            <input type="radio" id="Queso" name="side" value="Queso" data-price="1.99">
+            <label class="options" for="Queso">Queso ($1.99)</label><br>
+            
+            <input type="radio" id="Gaucamole" name="side" value="Gaucamole" data-price="1.99">
+            <label class="options" for="Gaucamole">Gaucamole ($1.99)</label><br>
+
+            <!-- Quantity Input -->
+            <label for="side-quantity">Quantity:</label>
+            <input class="options" type="number" id="side-quantity" value="1" min="1">
+            
+            <!-- Add to Cart button -->
+            <button class="add-to-cart" data-quantity-id="side-quantity">Add to Cart</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave,
+            El Dorado, KS 67042</p>
+    </footer>
+
+    <script src="../shop.js"></script>
+
+    <script>
+        // JavaScript to handle adding the selected side and quantity to the cart
+        document.querySelector('.add-to-cart').addEventListener('click', () => {
+            const selectedSide = document.querySelector('input[name="side"]:checked');
+            const itemName = selectedSide.value;
+            const itemPrice = parseFloat(selectedSide.getAttribute('data-price'));
+            const itemQuantity = parseInt(document.getElementById('side-quantity').value, 10);
+
+            // Get the current cart from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the item is already in the cart
+            const existingItem = cart.find(item => item.name === itemName);
+
+            if (existingItem) {
+                // If item exists, update its quantity and total price
+                existingItem.quantity += itemQuantity;
+                existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+            } else {
+                // If the item is new, create a new object and add it to the cart
+                const item = {
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: itemQuantity,
+                    totalPrice: (itemPrice * itemQuantity).toFixed(2)
+                };
+                cart.push(item);
+            }
+
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Alert the user
+            alert(`${itemQuantity} ${itemName} added to your cart!`);
+        });
+    </script>
+
+</body>
+</html>

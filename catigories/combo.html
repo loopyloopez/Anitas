@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <style>
+        /* Add this CSS to style the grid layout */
+        .combo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 10px; /* Space between items */
+            margin-top: 10px;
+        }
+
+        .combo-grid button {
+            width: 100%; /* Make buttons fit within grid cells */
+            padding: 10px;
+            background-color: #006341; /* Button background color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .combo-grid button:hover {
+            background-color: #ce1126; /* Red on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo" alt="Anitas Logo"></img>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+        <h1>Anitas</h1>        
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Combinations</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="/photos/DALL·E 2024-09-22 13.38.25 - A hyper-realistic image of a customizable Mexican plate with options of three tacos or vegetarian items, served with Mexican rice and refried beans. T.webp" alt="Tacos">
+                <h3>Combo</h3>
+                <p class="description">Build your own combination or Vegetarian plate. All combos are served with mexican rice and refried beans no substitution, all add-ons are extra add cheese sauce($0.99)</p>
+                <p class="price">$10.99</p>
+                
+                <!-- Grid Layout for Combo Options -->
+                <div class="combo-grid">
+                    <button class="add-to-cart" data-name="#1 Tamal and taco" data-price="10.99">#1 Tamal and Taco</button>
+                    <button class="add-to-cart" data-name="#2 Burrito, Chile Relleno" data-price="10.99">#2 Burrito, Chile Relleno</button>
+                    <button class="add-to-cart" data-name="#3 Chalupa, Enchiladas" data-price="10.99">#3 Chalupa, Enchiladas</button>
+                    <button class="add-to-cart" data-name="#4 Taco and Burrito" data-price="10.99">#4 Taco and Burrito</button>
+                    <button class="add-to-cart" data-name="#5 Two Enchiladas" data-price="10.99">#5 Two Enchiladas</button>
+                    <button class="add-to-cart" data-name="#6 Enchiladas and Tacos" data-price="10.99">#6 Enchiladas and Tacos</button>
+                    <button class="add-to-cart" data-name="#7 Enchiladas and Chile Relleno" data-price="10.99">#7 Enchiladas and Chile Relleno</button>
+                    <button class="add-to-cart" data-name="#8 Enchiladas and Tamales" data-price="10.99">#8 Enchiladas and Tamales</button>
+                    <button class="add-to-cart" data-name="#9 Two Tacos" data-price="10.99">#9 Two Tacos</button>
+                    <button class="add-to-cart" data-name="#10 Tostadas" data-price="10.99">#10 Tostadas</button>
+                </div>
+            </div>
+
+            <!-- Add more menu items here if needed -->
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script src="../shop.js"></script>
+</body>
+</html>

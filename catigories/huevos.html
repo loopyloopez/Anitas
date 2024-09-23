@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <style>
+        /* Styling for special instructions textarea */
+        .special-instructions {
+            width: 100%;
+            height: 30px; /* Small initial height */
+            padding: 10px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none;
+            transition: height 0.3s ease;
+            overflow: hidden;
+        }
+
+        .special-instructions:focus {
+            height: 100px; /* Expand on focus */
+            border-color: #ce1126; /* Red border on focus */
+            outline: none;
+        }
+
+        #success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50; /* Success green */
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <div id="success-message">Item successfully added to cart!</div>
+        <h1>Anitas</h1>
+
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Huevos</h2>
+        <p class="times">Monday-Friday 11:00 AM - 3:00 PM</p>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="/photos/huevos rancherso.png" alt="Tacos">
+                <h3>Huevos Rancheros</h3>
+                <p class="description">ranch style eggs, topped with our authentic Mexican sauce</p>
+                <p class="price">$9.99</p>
+                <textarea id="instructions-1" class="special-instructions" placeholder="Special instructions: No onions, extra cheese..."></textarea>
+                <button class="add-to-cart" data-name="Huevos Rancheros" data-price="9.99" data-instructions-id="instructions-1">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/huevos con chorizo.png" alt="Burrito">
+                <h3>Huevos con Chorizo</h3>
+                <p class="description">scrambled eggs with chorizo(mexican sausage)</p>
+                <p class="price">$9.99</p>
+                <textarea id="instructions-2" class="special-instructions" placeholder="Special instructions: No onions, extra cheese..."></textarea>
+                <button class="add-to-cart" data-name="Huevos con Chorizo" data-price="9.99" data-instructions-id="instructions-2">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/huevos mexicanos.png" alt="Quesadilla">
+                <h3>Huevos Mexicanos</h3>
+                <p class="description">scrambled eggs cooked with pico de gallo</p>
+                <p class="price">$9.99</p>
+                <textarea id="instructions-3" class="special-instructions" placeholder="Special instructions: No onions, extra cheese..."></textarea>
+                <button class="add-to-cart" data-name="Huevos Mexicanos" data-price="9.99" data-instructions-id="instructions-3">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/huevos con jamon.png" alt="Quesadilla">
+                <h3>Huevos con Jamon</h3>
+                <p class="description">scrambled eggs and ham</p>
+                <p class="price">$9.99</p>
+                <textarea id="instructions-4" class="special-instructions" placeholder="Special instructions: No onions, extra cheese..."></textarea>
+                <button class="add-to-cart" data-name="Huevos con Jamon" data-price="9.99" data-instructions-id="instructions-4">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script>
+        // Retrieve cart from localStorage or initialize it
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Function to update cart in localStorage
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Function to display success message
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+
+            // Hide message after 3 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        // Function to add items to cart
+        function addItemToCart(itemName, itemPrice, specialInstructions = '') {
+            const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+                existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+            } else {
+                const item = {
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: 1,
+                    totalPrice: itemPrice.toFixed(2),
+                    instructions: specialInstructions
+                };
+                cart.push(item);
+            }
+
+            // Update localStorage
+            updateCart();
+        }
+
+        // Handle adding to cart for all buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.getAttribute('data-name');
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = instructionsId ? document.getElementById(instructionsId).value.trim() : '';
+
+                addItemToCart(itemName, itemPrice, specialInstructions);
+
+                // Show success message
+                showSuccessMessage(`${itemName} added to your cart!`);
+            });
+        });
+    </script>
+</body>
+</html>

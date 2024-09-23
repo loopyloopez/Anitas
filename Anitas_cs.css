@@ -1,0 +1,208 @@
+/* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    background-image: url('bghomepageanitas.jpg'); /* Path to your image file */
+    background-size: cover; /* Ensures the image covers the whole background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents image repetition */
+}
+
+
+/* Order Button */
+.order-button {
+    display: inline-block;
+    padding: 10px 20px; /* Smaller padding */
+    font-size: 1.2em; /* Adjust font size */
+    background-color: #ce1126; /* Mexican flag red */
+    color: white;
+    text-decoration: none;
+    border: 3px solid #ffd700; /* Gold border */
+    border-radius: 10px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.order-button:hover {
+    background-color: #006341; /* Green on hover */
+    border-color: #ce1126; /* Red border on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    padding: 20px 0; /* Reduced padding for mobile */
+    background-color: #006341; /* Mexican flag green */
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for header */
+}
+
+header h1 {
+    font-size: 2.2em; /* Smaller font for better fit on mobile */
+    color: #ffd700; /* Gold color for restaurant name */
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1em; /* Smaller font size for better readability */
+}
+
+/* Round Image Container */
+.round-image {
+    width: 300px; /* Image size */
+    height: 300px;
+    border-radius: 50%; /* Makes the image round */
+    overflow: hidden; /* Ensures the image fits within the circle */
+    margin: 10px auto;
+    border: 10px solid #ffd700; /* Gold border around the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8; /* Fallback color if image fails to load */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for round image */
+}
+
+.round-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the circular frame */
+    border-radius: 50%; /* Ensures the image is circular */
+}
+
+/* Navigation Styling */
+nav ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 10px;
+}
+
+nav ul li {
+    display: block; /* Stack navigation links vertically for mobile */
+    margin: 10px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    padding: 10px;
+    transition: color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for nav items */
+}
+#order-now{
+    display: inline-block;
+    padding: 10px 20px; /* Smaller padding */
+    font-size: 1.5em; /* Adjust font size */
+    background-color: #ce1126; /* Mexican flag red */
+    color: white;
+    text-decoration: none;
+    border: 3px solid #ffd700; /* Gold border */
+    border-radius: 10px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow
+    background-color: #006341; /* Green on hover */
+    border-color: #ce1126; /* Red border on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
+}
+#call-now{
+    display: inline-block;
+    padding: 10px 20px; /* Smaller padding */
+    font-size: 1.5em; /* Adjust font size */
+    background-color: #ce1126; /* Mexican flag red */
+    color: white;
+    text-decoration: none;
+    border: 3px solid #ffd700; /* Gold border */
+    border-radius: 10px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow
+    background-color: #006341; /* Green on hover */
+    border-color: #ce1126; /* Red border on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); 
+}
+
+
+nav ul li a:hover {
+    color: #ffd700; /* Gold color on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Main Section Styling */
+main {
+    text-align: center;
+    padding: 50px 10px; /* Reduced padding for mobile */
+}
+
+main section h2 {
+    font-size: 2em; /* Smaller section heading */
+    color: #ce1126; /* Mexican flag red for section titles */
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow for section titles */
+}
+
+main section p {
+    font-size: 1.1em;
+    max-width: 100%; /* Make text span full width on small screens */
+    margin: 10px auto;
+    line-height: 1.5; /* Slightly more compressed line height */
+    color: #555;
+}
+.titletexture{
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for titles */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #ce1126; /* Mexican flag red */
+    color: white;
+    text-align: center;
+    padding: 15px; /* Reduced padding */
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.9em; /* Smaller font size */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Shadow for footer */
+}
+
+/* Media Queries for Even Smaller Screens */
+@media (max-width: 400px) {
+    header h1 {
+        font-size: 1.8em; /* Further reduce font size */
+    }
+
+    header p {
+        font-size: 0.9em; /* Smaller subtext */
+    }
+
+    .round-image {
+        width: 150px; /* Even smaller image */
+        height: 150px;
+    }
+
+
+    nav ul li a {
+        font-size: 1.1em;
+    }
+
+    main section h2 {
+        font-size: 1.8em; /* Reduced heading size */
+    }
+
+    main section p {
+        font-size: 1em; /* Reduce paragraph size */
+    }
+
+    footer {
+        padding: 10px;
+        font-size: 0.8em;
+    }
+}

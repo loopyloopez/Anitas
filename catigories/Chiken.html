@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    
+    <!-- Include Font Awesome for cart icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="catigories.css">
+    <style>
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: 1;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        .special-instructions {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none; /* Disable manual resizing */
+            transition: height 0.3s ease;
+        }
+
+        .special-instructions:focus {
+            height: 100px; /* Expand on focus */
+            border-color: #ce1126; /* Red border on focus */
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+        <h1>Anitas</h1>
+     
+        
+        <!-- View Cart button with Font Awesome cart icon -->
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Chickens</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+              
+                <h3>Pollo Jack</h3>
+                <p class="description">tendered chicken chunks, seasoned and grilled to perfection, topped with spinach, mushrooms and jack cheese</p>
+                <p class="price">$12.99</p>
+                
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn1" name="tortilla1" value="Corn">
+                <label for="corn1">Corn</label><br>
+                <input type="radio" id="flour1" name="tortilla1" value="Flour">
+                <label for="flour1">Flour</label><br>
+
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-1" class="special-instructions" placeholder="Special instructions: e.g., No mushrooms, extra cheese."></textarea>
+
+                <!-- Add to Cart button -->
+                <button class="add-to-cart" data-name="Pollo Jack" data-price="12.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/pollo con camaron.png" alt="Burrito">
+                <h3>Pollo Con Camaron</h3>
+                <p class="description">Grilled Chicken strips with Shrimp and Cheese Sauce. Served with Rice, Beans, and Tortillas.</p>
+                <p class="price">$13.99</p>
+                
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn2" name="tortilla2" value="Corn">
+                <label for="corn2">Corn</label><br>
+                <input type="radio" id="flour2" name="tortilla2" value="Flour">
+                <label for="flour2">Flour</label><br>
+
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-2" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra rice."></textarea>
+
+                <!-- Add to Cart button -->
+                <button class="add-to-cart" data-name="Pollo Con Camaron" data-price="13.99" data-tortilla="tortilla2" data-instructions-id="special-instructions-2">Add to Cart</button>
+            </div>
+         
+
+            <div class="menu-item">
+               
+                <h3>Chori Pollo</h3>
+                <p class="description">sliced chicken grilled with chorizo, smothered with cheese sauce</p>
+                <p class="price">$12.99</p>
+                
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn3" name="tortilla3" value="Corn">
+                <label for="corn3">Corn</label><br>
+                <input type="radio" id="flour3" name="tortilla3" value="Flour">
+                <label for="flour3">Flour</label><br>
+
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-3" class="special-instructions" placeholder="Special instructions: e.g., No cheese, extra chorizo."></textarea>
+
+                <!-- Add to Cart button -->
+                <button class="add-to-cart" data-name="Chori Pollo" data-price="12.99" data-tortilla="tortilla3" data-instructions-id="special-instructions-3">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="/photos/pollo con queso.png" alt="Burrito">
+                <h3>Pollo Con Queso</h3>
+                <p class="description">grilled chicken or steak strips with cheese sauce, served with rice and beans, tortillas. Also available with chicken/Steak</p>
+                <p class="price">$11.99</p>
+                
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn2" name="tortilla2" value="Corn">
+                <label for="corn2">Corn</label><br>
+                <input type="radio" id="flour2" name="tortilla2" value="Flour">
+                <label for="flour2">Flour</label><br>
+
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-4" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra rice."></textarea>
+
+                <!-- Add to Cart button -->
+                <button class="add-to-cart" data-name="Pollo Con Camaron" data-price="11.99" data-tortilla="tortilla2" data-instructions-id="special-instructions-2">Add to Cart</button>
+            </div>
+                 <div class="menu-item">
+                
+                <h3>Pollo Poblano</h3>
+                <p class="description">Grilled Chicken with Poblano Peppers, Bacon and Onions. Covered with Cheese Sauce. Served with Rice and Beans</p>
+                <p class="price">$13.99</p>
+                
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn2" name="tortilla2" value="Corn">
+                <label for="corn2">Corn</label><br>
+                <input type="radio" id="flour2" name="tortilla2" value="Flour">
+                <label for="flour2">Flour</label><br>
+
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-4" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra rice."></textarea>
+
+                <!-- Add to Cart button -->
+                <button class="add-to-cart" data-name="Pollo Poblano" data-price="13.99" data-tortilla="tortilla2" data-instructions-id="special-instructions-2">Add to Cart</button>
+            </div>
+
+            <!-- More menu items with tortilla selection can be added similarly -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script>
+        // Handle "Add to Cart" with tortilla validation and special instructions
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const tortillaGroup = button.getAttribute('data-tortilla');
+                const selectedTortilla = document.querySelector(`input[name="${tortillaGroup}"]:checked`);
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = document.getElementById(instructionsId).value.trim();
+                const addToCartButton = button;
+
+                // Check if tortilla is selected
+                if (!selectedTortilla) {
+                    // Add the shake effect if no tortilla is selected
+                    addToCartButton.classList.add('shake');
+                    setTimeout(() => {
+                        addToCartButton.classList.remove('shake');
+                    }, 500); // Remove the shake effect after 0.5s
+                    alert("Please select a tortilla type (Corn or Flour).");
+                    return; // Stop if no tortilla is selected
+                }
+
+                const itemName = `${button.getAttribute('data-name')} with ${selectedTortilla.value} tortilla`;
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+
+                // Get the current cart from localStorage
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Check if the item is already in the cart
+                const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+                if (existingItem) {
+                    existingItem.quantity += 1; // Increase quantity if it already exists
+                    existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+                } else {
+                    const item = {
+                        name: itemName,
+                        price: itemPrice,
+                        quantity: 1,
+                        totalPrice: itemPrice.toFixed(2),
+                        instructions: specialInstructions
+                    };
+                    cart.push(item);
+                }
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Alert the user
+                alert(`${itemName} added to your cart with instructions: "${specialInstructions}"`);
+            });
+        });
+    </script>
+
+</body>
+</html>

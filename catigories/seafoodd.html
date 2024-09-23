@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <style>
+        .special-instructions {
+            width: 100%;
+            height: 30px; /* Small initial height */
+            padding: 10px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none; /* Disable manual resizing */
+            transition: height 0.3s ease; /* Smooth transition on height */
+            overflow: hidden;
+        }
+
+        .special-instructions:focus {
+            border-color: #ce1126; /* Red border on focus */
+            outline: none;
+            height: 100px; /* Expand height on focus */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+        <h1>Anitas</h1>        
+       
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Seafood</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="/photos/COCTEL DE CAMARON.png" alt="Conctel De Camaron">
+                <h3>Conctel De Camaron</h3>
+                <p class="description">Mexican style shrimp cocktail. Served with saltine crackers, pico de gallo, and avocado.</p>
+                <p class="price">$15.99</p>
+                <button class="add-to-cart" data-name="Conctel De Camaron" data-price="15.99" data-instructions-id="special-instructions-1">Add to Cart</button>
+                <textarea id="special-instructions-1" class="special-instructions" placeholder="Special instructions: e.g., No onions, extra cilantro."></textarea>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/ceviche.png" alt="Ceviche">
+                <h3>Ceviche</h3>
+                <p class="description">Shrimp (Camarón) or Fish (Pescado) marinated with lemon juice, mixed with pico de gallo. Served with saltine crackers and avocado.</p>
+                <p class="price">$15.99</p>
+                <button class="add-to-cart" data-name="Ceviche" data-price="15.99" data-instructions-id="special-instructions-2">Add to Cart</button>
+                <textarea id="special-instructions-2" class="special-instructions" placeholder="Special instructions: e.g., No onions, extra lime."></textarea>
+            </div>
+
+            <div class="menu-item">
+               
+                <h3>Camaron Mazatian</h3>
+                <p class="description">Grilled shrimp, bell pepper, zucchini, squash, and onion. Served on a bed of rice, topped with cheese sauce.</p>
+                <p class="price">$15.99</p>
+                <button class="add-to-cart" data-name="Camaron Mazatian" data-price="15.99" data-instructions-id="special-instructions-3">Add to Cart</button>
+                <textarea id="special-instructions-3" class="special-instructions" placeholder="Special instructions: e.g., No zucchini, extra cheese."></textarea>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/chipotlke shrimp.png" alt="Camarones Chipotle">
+                <h3>Camarones Chipotle</h3>
+                <p class="description">Grilled shrimp cooked in our special hot chipotle sauce. Served with rice and beans.</p>
+                <p class="price">$15.99</p>
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn1" name="tortilla1" value="Corn">
+                <label for="corn1">Corn</label><br>
+                <input type="radio" id="flour1" name="tortilla1" value="Flour">
+                <label for="flour1">Flour</label><br>
+                <button class="add-to-cart" data-name="Camarones Chipotle" data-price="15.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-4">Add to Cart</button>
+                <textarea id="special-instructions-4" class="special-instructions" placeholder="Special instructions: e.g., Mild sauce, no beans."></textarea>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/shrimp.png" alt="Camarones a la Diabla">
+                <h3>Camarones a la Diabla</h3>
+                <p class="description">Grilled shrimp and onion, cooked in our special red hot sauce. Served with rice and beans.</p>
+                <p class="price">$15.99</p>
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn2" name="tortilla2" value="Corn">
+                <label for="corn2">Corn</label><br>
+                <input type="radio" id="flour2" name="tortilla2" value="Flour">
+                <label for="flour2">Flour</label><br>
+                <button class="add-to-cart" data-name="Camarones a la Diabla" data-price="15.99" data-tortilla="tortilla2" data-instructions-id="special-instructions-5">Add to Cart</button>
+                <textarea id="special-instructions-5" class="special-instructions" placeholder="Special instructions: e.g., Less spicy, extra rice."></textarea>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/camarones fundidos.png" alt="Camarones Fundidos">
+                <h3>Camarones Fundidos</h3>
+                <p class="description">Shrimp marinated with herbs and spices, topped with sautéed onions, mushrooms, and melted Monterrey Jack cheese. Served on a bed of rice.</p>
+                <p class="price">$15.99</p>
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn3" name="tortilla3" value="Corn">
+                <label for="corn3">Corn</label><br>
+                <input type="radio" id="flour3" name="tortilla3" value="Flour">
+                <label for="flour3">Flour</label><br>
+                <button class="add-to-cart" data-name="Camarones Fundidos" data-price="15.99" data-tortilla="tortilla3" data-instructions-id="special-instructions-6">Add to Cart</button>
+                <textarea id="special-instructions-6" class="special-instructions" placeholder="Special instructions: e.g., No mushrooms, extra cheese."></textarea>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/pollo con camaron.png" alt="Camarones con Queso">
+                <h3>Camarones con Queso</h3>
+                <p class="description">Grilled shrimp smothered in melted cheese sauce. Served with rice, beans, and tortillas.</p>
+                <p class="price">$15.99</p>
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn4" name="tortilla4" value="Corn">
+                <label for="corn4">Corn</label><br>
+                <input type="radio" id="flour4" name="tortilla4" value="Flour">
+                <label for="flour4">Flour</label><br>
+                <button class="add-to-cart" data-name="Camarones con Queso" data-price="15.99" data-tortilla="tortilla4" data-instructions-id="special-instructions-15">Add to Cart</button>
+                <textarea id="special-instructions-15" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra cheese."></textarea>
+            </div>
+
+            <div class="menu-item">
+               
+                <h3>Tilapia Primavera</h3>
+                <p class="description">Grilled tilapia fish fillet, shrimp, and broccoli, served with Mexican rice, salad, sliced avocado, and chiles toreados.</p>
+                <p class="price">$15.99</p>
+                <button class="add-to-cart" data-name="Tilapia Primavera" data-price="15.99" data-instructions-id="special-instructions-16">Add to Cart</button>
+                <textarea id="special-instructions-16" class="special-instructions" placeholder="Special instructions: e.g., No garlic, extra vegetables."></textarea>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/pescado veracruz.png" alt="Pescado Veracruz">
+                <h3>Pescado Veracruz</h3>
+                <p class="description">Two tilapias with shrimp on top, covered with our special sauce. Served with rice and beans.</p>
+                <p class="price">$15.99</p>
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn5" name="tortilla5" value="Corn">
+                <label for="corn5">Corn</label><br>
+                <input type="radio" id="flour5" name="tortilla5" value="Flour">
+                <label for="flour5">Flour</label><br>
+                <button class="add-to-cart" data-name="Pescado Veracruz" data-price="15.99" data-tortilla="tortilla5" data-instructions-id="special-instructions-17">Add to Cart</button>
+                <textarea id="special-instructions-17" class="special-instructions" placeholder="Special instructions: e.g., No olives, extra sauce."></textarea>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/shrimp tacos.png" alt="Fish or Shrimp Tacos">
+                <h3>Fish or Shrimp Tacos</h3>
+                <p class="description">Your choice of grilled fish or shrimp in soft tortillas, topped with cheese sauce, pico de gallo. Served with rice and beans.</p>
+                <p class="price">$10.99</p>
+            
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn6" name="tortilla6" value="Corn">
+                <label for="corn6">Corn</label><br>
+                <input type="radio" id="flour6" name="tortilla6" value="Flour">
+                <label for="flour6">Flour</label><br>
+            
+                <!-- Add to Cart button -->
+                <button class="add-to-cart" data-name="Fish or Shrimp Tacos" data-price="10.99" data-tortilla="tortilla6" data-instructions-id="special-instructions-18">Add to Cart</button>
+            
+                <textarea id="special-instructions-18" class="special-instructions" placeholder="Special instructions: e.g., Extra chipotle sauce, no pico de gallo."></textarea>
+            </div>
+            <div class="menu-item">
+               
+                <h3>Mariscada con Queso</h3>
+                <p class="description">Grilled shrimp, tilapia fillet, crab meat, zucchini, and squash, served on a bed of rice topped with cheese sauce.</p>
+                <p class="price">$17.99</p>
+                <button class="add-to-cart" data-name="Mariscada con Queso" data-price="17.99" data-instructions-id="special-instructions-19">Add to Cart</button>
+                <textarea id="special-instructions-19" class="special-instructions" placeholder="Special instructions: e.g., Extra cheese, no beans."></textarea>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/burrito del mar.png" alt="Burrito Del Mar">
+                <h3>Burrito Del Mar</h3>
+                <p class="description">Large flour tortilla stuffed with crab meat and shrimp, topped with lettuce, tomato, sour cream, and cheese. Served with rice.</p>
+                <p class="price">$13.99</p>
+                <button class="add-to-cart" data-name="Burrito Del Mar" data-price="13.99" data-instructions-id="special-instructions-20">Add to Cart</button>
+                <textarea id="special-instructions-20" class="special-instructions" placeholder="Special instructions: e.g., No guacamole, extra rice."></textarea>
+            </div>
+
+            <!-- Additional Menu Items -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script>
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.getAttribute('data-name');
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = document.getElementById(instructionsId).value.trim();
+
+                // Get tortilla selection if available
+                const tortillaGroup = button.getAttribute('data-tortilla');
+                const selectedTortilla = tortillaGroup ? document.querySelector(`input[name="${tortillaGroup}"]:checked`) : null;
+
+                // Check if tortilla is required and selected
+                if (tortillaGroup && !selectedTortilla) {
+                    alert("Please select a tortilla type (Corn or Flour).");
+                    return;
+                }
+
+                const itemWithTortilla = selectedTortilla ? `${itemName} with ${selectedTortilla.value} tortilla` : itemName;
+
+                if (!itemName || isNaN(itemPrice)) {
+                    alert("Invalid item or price");
+                    return;
+                }
+
+                // Add item to cart
+                addItemToCart(itemWithTortilla, itemPrice, 1, specialInstructions);
+                showSuccessMessage(`${itemWithTortilla} has been added to the cart`);
+            });
+        });
+
+        // Function to show success message
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = message;
+            successMessage.classList.add('show');
+
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+        }
+
+        // Function to update cart in localStorage
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Retrieve cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Function to add items to cart
+        function addItemToCart(itemName, itemPrice, itemQuantity, specialInstructions = '') {
+            // Check if the item with the same name and instructions already exists in the cart
+            const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+            if (existingItem) {
+                // If item with the same name and instructions exists, update its quantity and total price
+                existingItem.quantity += itemQuantity;
+                existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+            } else {
+                // If the item is new, create a new object and push it to the cart
+                const item = {
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: itemQuantity,
+                    totalPrice: (itemPrice * itemQuantity).toFixed(2),
+                    instructions: specialInstructions
+                };
+                cart.push(item);
+            }
+
+            // Update the cart in localStorage
+            updateCart();
+        }
+
+        // Function to handle expanding and shrinking textareas
+        document.querySelectorAll('.special-instructions').forEach(textarea => {
+            textarea.addEventListener('focus', function() {
+                this.style.height = '100px'; // Expand on focus
+            });
+
+            textarea.addEventListener('blur', function() {
+                this.style.height = '30px'; // Shrink back on blur
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .special-instructions {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none; /* Disable manual resizing */
+            transition: height 0.3s ease;
+        }
+
+        .special-instructions:focus {
+            height: 100px; /* Expand on focus */
+            border-color: #ce1126; /* Red border on focus */
+            outline: none;
+        }
+
+        #success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <div id="success-message">Item successfully added to cart!</div>
+        <h1>Anitas</h1>        
+      
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Chimichangas</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+           
+                <h3>Chimichanga fajitas</h3>
+                <p class="description">chicken(11.99) steak(12.99) shrimp(14.99) pork(12.99) grilled with onions, tomatoes and bell pepper</p>
+                <p class="price">$9.99</p>
+                <textarea id="special-instructions-1" class="special-instructions" placeholder="Special instructions: e.g., No sour cream, extra guacamole"></textarea>
+                <button class="add-to-cart" data-name="Chimichanga fajitas Chicken" data-price="9.99" data-instructions-id="special-instructions-1">Chicken</button>
+                <button class="add-to-cart" data-name="Chimichanga fajitas Steak" data-price="9.99" data-instructions-id="special-instructions-1">Steak</button>
+                <button class="add-to-cart" data-name="Chimichanga fajitas Shrimp" data-price="9.99" data-instructions-id="special-instructions-1">Shrimp</button>
+                <button class="add-to-cart" data-name="Chimichanga fajitas Pork" data-price="9.99" data-instructions-id="special-instructions-1">Pork</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/monster chimi.png" alt="Burrito">
+                <h3>Monster Chimichanga</h3>
+                <p class="description">large chimichanga filled with beef or chicken, rice and beans, smothered with cheese sauce. topped with lettuce,tomatoes, cheese and sour cream</p>
+                <p class="price">$12.99</p>
+                <textarea id="special-instructions-2" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra meat"></textarea>
+                <button class="add-to-cart" data-name="Monster Chimichanga:beef" data-price="12.99" data-instructions-id="special-instructions-2">beef</button>
+                <button class="add-to-cart" data-name="Monster Chimichanga:chicken" data-price="12.99" data-instructions-id="special-instructions-2">chicken</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/chimiseafood.webp" alt="Quesadilla">
+                <h3>Chimichanga Seafood</h3>
+                <p class="description">Grilled Shrimp, Crab Meat, Onion, and Tomato.</p>
+                <p class="price">$14.99</p>
+                <textarea id="special-instructions-3" class="special-instructions" placeholder="Special instructions: e.g., No onion, extra shrimp"></textarea>
+                <button class="add-to-cart" data-name="Chimichanga Seafood" data-price="14.99" data-instructions-id="special-instructions-3">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+              
+                <h3>Chimichanga Special</h3>
+                <p class="description">Three Chimichangas, one Beef, one Chicken, and one Shrimp. Served with Rice, Beans, and Salad</p>
+                <p class="price">$13.99</p>
+                <textarea id="special-instructions-4" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra salad"></textarea>
+                <button class="add-to-cart" data-name="Chimichanga Special" data-price="13.99" data-instructions-id="special-instructions-4">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+                <img src="/photos/chimichanga.png" alt="Quesadilla">
+                <h3>Chimichanga</h3>
+                <p class="description">ground beef, chicken or veggie</p>
+                <p class="price">$7.99</p>
+                <textarea id="special-instructions-5" class="special-instructions" placeholder="Special instructions: e.g., No cheese, extra salsa"></textarea>
+                <button class="add-to-cart" data-name="Chimichanga veggie" data-price="7.99" data-instructions-id="special-instructions-5">Veggie</button>
+                <button class="add-to-cart" data-name="Chimichanga chicken" data-price="7.99" data-instructions-id="special-instructions-5">Chicken</button>
+                <button class="add-to-cart" data-name="Chimichanga ground beef" data-price="7.99" data-instructions-id="special-instructions-5">Ground Beef</button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script>
+        // Handle "Add to Cart" functionality with special instructions
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.getAttribute('data-name');
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = document.getElementById(instructionsId).value.trim();
+
+                // Get the current cart from localStorage
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Check if the item with the same name and special instructions already exists in the cart
+                const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+                if (existingItem) {
+                    existingItem.quantity += 1; // Increase quantity if already exists
+                    existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+                } else {
+                    const item = {
+                        name: itemName,
+                        price: itemPrice,
+                        quantity: 1,
+                        totalPrice: itemPrice.toFixed(2),
+                        instructions: specialInstructions
+                    };
+                    cart.push(item);
+                }
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Show success message
+                showSuccessMessage(`${itemName} added to your cart with instructions: "${specialInstructions}"`);
+            });
+        });
+
+        // Function to show success message
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000); // Hide message after 3 seconds
+        }
+    </script>
+
+    <script src="../shop.js"></script>
+</body>
+</html>

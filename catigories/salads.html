@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <style>
+        .special-instructions {
+            width: 100%;
+            height: 30px; /* Small initial height */
+            padding: 10px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none; /* Disable manual resizing */
+            transition: height 0.3s ease; /* Smooth transition on height */
+            overflow: hidden;
+        }
+
+        .special-instructions:focus {
+            border-color: #ce1126; /* Red border on focus */
+            outline: none;
+            height: 100px; /* Expand on focus */
+        }
+
+        label {
+            align-self: flex-start;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+        <h1>Anitas</h1>        
+ 
+        <div id="success-message" class="hidden">Item successfully added to cart!</div>
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Salads</h2>
+        <div class="menu-grid">
+            <!-- Menu Item 1 -->
+            <div class="menu-item">
+                <img src="/photos/shrimp salad.png" alt="Grilled Shrimp Salad">
+                <h3>Grilled Shrimp Salad</h3>
+                <p class="description">Onion, Broccoli, Carrots and cheese, topped with grilled shrimp</p>
+                <p class="price">$16.99</p>
+                <button class="add-to-cart" data-name="Grilled Shrimp Salad" data-price="16.99" data-instructions-id="special-instructions-1">Add to Cart</button>
+               
+                <textarea id="special-instructions-1" class="special-instructions" placeholder="e.g., No onions, extra dressing. (some requests may need further payments on-site)"></textarea>
+            </div>
+
+            <!-- Menu Item 2 -->
+            <div class="menu-item">
+                <img src="/photos/chicken salad.png" alt="Grilled Chicken Salad">
+                <h3>Grilled Chicken Salad</h3>
+                <p class="description"> Sauteed Onion, Broccoli, Carrots and cheese, topped with grilled chicken</p>
+                <p class="price">$13.99</p>
+                <button class="add-to-cart" data-name="Grilled Chicken Salad" data-price="13.99" data-instructions-id="special-instructions-2">Add to Cart</button>
+              
+                <textarea id="special-instructions-2" class="special-instructions" placeholder="e.g., No croutons, extra dressing. (some requests may need further payments on-site)"></textarea>
+            </div>
+
+            <!-- Add more menu items here -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script src="../shop.js"></script>
+    <script>
+        // Function to handle expanding and shrinking textareas
+        document.querySelectorAll('.special-instructions').forEach(textarea => {
+            textarea.addEventListener('focus', function() {
+                this.style.height = '100px'; // Expand on focus
+            });
+            
+            textarea.addEventListener('blur', function() {
+                this.style.height = '30px'; // Shrink back on blur
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.getAttribute('data-name');
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = document.getElementById(instructionsId).value.trim();
+
+                if (!itemName || isNaN(itemPrice)) {
+                    alert("Invalid item or price");
+                    return;
+                }
+
+                // Add item to cart
+                addItemToCart(itemName, itemPrice, 1, specialInstructions);
+                showSuccessMessage(`${itemName} has been added to the cart`);
+            });
+        });
+
+        // Function to show success message
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = message;
+            successMessage.classList.add('show');
+
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
+        }
+
+        // Function to update cart in localStorage
+        function updateCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Retrieve cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Function to add items to cart
+        function addItemToCart(itemName, itemPrice, itemQuantity, specialInstructions = '') {
+            // Check if the item with the same name and instructions already exists in the cart
+            const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+            if (existingItem) {
+                // If item with the same name and instructions exists, update its quantity and total price
+                existingItem.quantity += itemQuantity;
+                existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+            } else {
+                // If the item is new, create a new object and push it to the cart
+                const item = {
+                    name: itemName,
+                    price: itemPrice,
+                    quantity: itemQuantity,
+                    totalPrice: (itemPrice * itemQuantity).toFixed(2),
+                    instructions: specialInstructions
+                };
+                cart.push(item);
+            }
+
+            // Update the cart in localStorage
+            updateCart();
+        }
+    </script>
+</body>
+</html>

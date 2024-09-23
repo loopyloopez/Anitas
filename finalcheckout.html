@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Anitas</title>
+    <link rel="stylesheet" href="finalcheckout.css">
+    <script src="https://js.stripe.com/v3/"></script> <!-- Stripe API -->
+    <style>
+        /* Make the form fields larger and responsive */
+        input[type="text"], input[type="email"] {
+            width: 100%; /* Make the input fields take up the full width of the form */
+            padding: 15px; /* Increase the padding for larger input fields */
+            margin-bottom: 20px; /* Add space between the fields */
+            font-size: 1.2em; /* Make the text larger */
+            border: 1px solid #ccc; /* Border around the fields */
+            border-radius: 5px; /* Slightly rounded corners */
+            box-sizing: border-box; /* Ensure padding doesn't affect the width */
+        }
+        #summary-details {
+            font-size: small;
+        }
+
+        button {
+            padding: 15px 30px; /* Increase button size */
+            font-size: 1.2em;
+            background-color: #8c2f39; /* Button color matching theme */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #f5d7ba;
+            color: #8c2f39;
+        }
+
+        .checkout-section {
+            max-width: 600px; /* Limit form width for larger screens */
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style for each meal box */
+        .meal-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .meal-box p {
+            margin: 5px 0;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 600px) {
+            .checkout-section {
+                padding: 10px;
+            }
+
+            input[type="text"], input[type="email"], button {
+                font-size: 1em;
+            }
+
+            .meal-box {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Checkout</h1>
+        <p>Complete your order</p>
+    </header>
+
+    <section class="checkout-section">
+        <!-- Form to submit the order -->
+        <form action="https://formsubmit.co/anitasmexicanrestaurants@gmail.com" method="POST" id="order-form">
+         
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+
+            <!-- Hidden fields to hold the order details -->
+            <input type="hidden" name="orderDetails" id="order-details">
+            <input type="hidden" name="totalPrice" id="total-price">
+            <input type="hidden" name="_next" value="https://anitass.com/ordersent.html">
+
+            <button type="submit">Send Order</button>
+        </form>
+
+        <!-- Cart and order summary -->
+        <h2>Order Summary <p id="summary-details">(please review order summary for accuracy)</p></h2>
+        <div id="cart-summary"></div>
+        <div id="order-summary">
+            <p>Items Total: $<span id="items-total">0.00</span></p>
+            <p>Tax: $<span id="tax">0.00</span></p>
+            <p>Total: $<span id="order-total">0.00</span></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas</p>
+    </footer>
+
+    <script>
+        // Retrieve cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartSummaryDiv = document.getElementById('cart-summary');
+
+        // Calculate the total price of items in the cart considering quantities
+        let itemsTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        const tax = itemsTotal * 0.0725; 
+        const orderTotal = itemsTotal + tax;
+
+        // Update the order summary on the checkout page
+        document.getElementById('items-total').textContent = itemsTotal.toFixed(2);
+        document.getElementById('tax').textContent = tax.toFixed(2);
+        document.getElementById('order-total').textContent = orderTotal.toFixed(2);
+
+        // Function to format order details from the cart, including special instructions if available
+        function formatOrderDetails(cart) {
+            return cart.map(item => {
+                let itemDetails = `${item.quantity}x ${item.name}: $${(item.price * item.quantity).toFixed(2)}`;
+                // Add special instructions if they exist
+                if (item.instructions) {
+                    itemDetails += ` (Special Instructions: ${item.instructions})`;
+                }
+                return itemDetails;
+            }).join('\n');
+        }
+
+        // Display the cart items in the summary, with each item in a box
+        cart.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.classList.add('meal-box'); // Add meal-box class for styling
+
+            let itemText = `<p><strong>${item.quantity}x ${item.name}</strong></p>`;
+            itemText += `<p>Price: $${(item.price * item.quantity).toFixed(2)}</p>`;
+            
+            // Check if special instructions exist and append them
+            if (item.instructions) {
+                itemText += `<p><strong>Special Instructions:</strong> ${item.instructions}</p>`;
+            }
+            
+            itemDiv.innerHTML = itemText;
+            cartSummaryDiv.appendChild(itemDiv);
+        });
+
+        // When the order form is submitted, update the hidden fields with order details
+        document.getElementById('order-form').addEventListener('submit', function(event) {
+            // Format the order details to send
+            const orderDetails = formatOrderDetails(cart);
+
+            // Update the hidden fields with order details and total price
+            document.getElementById('order-details').value = `Order Details:\n${orderDetails}`;
+            document.getElementById('total-price').value = `Total: $${orderTotal.toFixed(2)}`;
+        });
+    </script>
+
+</body>
+</html>

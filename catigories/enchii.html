@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .special-instructions {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none; /* Disable manual resizing */
+            transition: height 0.3s ease;
+        }
+
+        .special-instructions:focus {
+            height: 100px; /* Expand on focus */
+            border-color: #ce1126; /* Red border on focus */
+            outline: none;
+        }
+
+        #success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <div id="success-message">Item successfully added to cart!</div>
+        <h1>Anitas</h1>        
+   
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Enchiladas</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+              
+                <h3>Enchiladas Supreme</h3>
+                <p class="description">flour rolled corn tortilla one beef, one chicken,on cheese, and one bean, topped with enchiladas sauce, cheese lettuce, tomato and sour cream
+                </p>
+                <p class="price">$11.99</p>
+                <textarea id="special-instructions-1" class="special-instructions" placeholder="Special instructions: e.g., No tomatoes, extra sour cream"></textarea>
+                <button class="add-to-cart" data-name="Enchiladas Supreme" data-price="11.99" data-instructions-id="special-instructions-1">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+              
+                <h3>Enchiladas Mexicanas</h3>
+                <p class="description">one chicken(green sauce), one cheese(cheese sauce), one beef(red sauce) Enchiladas. served with rice and beans</p>
+                <p class="price">$11.99</p>
+                <textarea id="special-instructions-2" class="special-instructions" placeholder="Special instructions: e.g., No tomatoes, extra sour cream"></textarea>
+                <button class="add-to-cart" data-name="Enchiladas Mexicanas" data-price="11.99" data-instructions-id="special-instructions-2">Add to Cart</button>
+            </div>
+
+            <!-- Additional Meals -->
+
+            <!-- Meal 1 -->
+            <div class="menu-item">
+              
+                <h3>Addies Special</h3>
+                <p class="description">Three Chicken Enchiladas topped with Green Salsa, Cheese, and Sour Cream. Served with Rice and Beans.</p>
+                <p class="price">$12.99</p>
+                <textarea id="special-instructions-3" class="special-instructions" placeholder="Special instructions: e.g., No sour cream, extra cheese"></textarea>
+                <button class="add-to-cart" data-name="Addies Special" data-price="12.99" data-instructions-id="special-instructions-3">Add to Cart</button>
+            </div>
+
+            <!-- Meal 2 -->
+            <div class="menu-item">
+               
+                <h3>Enchiladas Poblanas</h3>
+                <p class="description">Three Grilled Chicken Enchiladas topped with Poblano Sauce and Cheese. Served with Rice and Salad.</p>
+                <p class="price">$12.99</p>
+                <textarea id="special-instructions-4" class="special-instructions" placeholder="Special instructions: e.g., No salad, extra sauce"></textarea>
+                <button class="add-to-cart" data-name="Enchiladas Poblanas" data-price="12.99" data-instructions-id="special-instructions-4">Add to Cart</button>
+            </div>
+
+            <!-- Meal 3 -->
+            <div class="menu-item">
+              
+                <h3>Enchilads suizas</h3>
+                <p class="description">Three Chicken Enchiladas topped with cheese and green sauce. served with rice and crema salad</p>
+                <p class="price">$11.99</p>
+                <textarea id="special-instructions-5" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra rice"></textarea>
+                <button class="add-to-cart" data-name="Enchilads suizas" data-price="11.99" data-instructions-id="special-instructions-5">Add to Cart</button>
+            </div>
+
+            <!-- Meal 4 -->
+        
+           
+            <!-- Missing Meal 6 -->
+            <div class="menu-item">
+               
+                <h3>Enchiladas Rancheros</h3>
+                <p class="description">Three Cheese Enchiladas with grilled pork and Vegetables on top. served with rice and beans</p>
+                <p class="price">$10.99</p>
+                <textarea id="special-instructions-8" class="special-instructions" placeholder="Special instructions: e.g., Extra salsa, no sour cream"></textarea>
+                <button class="add-to-cart" data-name="Enchiladas Rancheros" data-price="10.99" data-instructions-id="special-instructions-8">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+              
+                <h3>Mi Mexico</h3>
+                <p class="description">three cheese chicken fajitas enchiladas,topped with cheese dip, served with rice and beans</p>
+                <p class="price">$11.99</p>
+                <textarea id="special-instructions-9" class="special-instructions" placeholder="Special instructions: e.g., Extra salsa, no sour cream"></textarea>
+                <button class="add-to-cart" data-name="Mi Mexico" data-price="11.99" data-instructions-id="special-instructions-8">Add to Cart</button>
+            </div>
+            <!-- Add more menu items here, including special instructions for each -->
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script>
+        // Handle "Add to Cart" functionality with special instructions
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const itemName = button.getAttribute('data-name');
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = document.getElementById(instructionsId).value.trim();
+
+                // Get the current cart from localStorage
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Check if the item with the same name and special instructions already exists in the cart
+                const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+                if (existingItem) {
+                    existingItem.quantity += 1; // Increase quantity if already exists
+                    existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+                } else {
+                    const item = {
+                        name: itemName,
+                        price: itemPrice,
+                        quantity: 1,
+                        totalPrice: itemPrice.toFixed(2),
+                        instructions: specialInstructions
+                    };
+                    cart.push(item);
+                }
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Show success message
+                showSuccessMessage(`${itemName} added to your cart with instructions: "${specialInstructions}"`);
+            });
+        });
+
+        // Function to show success message
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000); // Hide message after 3 seconds
+        }
+    </script>
+
+    <script src="../shop.js"></script>
+</body>
+</html>
+

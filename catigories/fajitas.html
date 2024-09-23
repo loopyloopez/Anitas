@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: 1;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        .special-instructions {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none; /* Disable manual resizing */
+            transition: height 0.3s ease;
+        }
+
+        .special-instructions:focus {
+            height: 100px; /* Expand on focus */
+            border-color: #ce1126; /* Red border on focus */
+            outline: none;
+        }
+
+        #success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <div id="success-message">Item successfully added to cart!</div>
+        <h1>Anitas</h1>        
+       
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Fajitas</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="/photos/fajitas.png" alt="Tacos">
+                <h3>Fajitas</h3>
+                <p class="description">All our Fajitas are served with Rice, Beans, Guacamole, Sour Cream, Pico de Gallo, and Tortillas.</p>
+                <p class="price">$9.99</p>
+
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn1" name="tortilla1" value="Corn">
+                <label for="corn1">Corn</label><br>
+                <input type="radio" id="flour1" name="tortilla1" value="Flour">
+                <label for="flour1">Flour</label><br>
+
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-1" class="special-instructions" placeholder="Special instructions: e.g., No tomatoes, extra sour cream"></textarea>
+
+                <button class="add-to-cart" data-name="Fajitas/steak" data-price="9.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Steak</button>
+                <button class="add-to-cart" data-name="Fajitas/chicken" data-price="9.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Chicken</button>
+                <button class="add-to-cart" data-name="Fajitas/veggie" data-price="9.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Veggie</button>
+                <button class="add-to-cart" data-name="Fajitas/pork" data-price="9.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Pork</button>
+            </div>
+
+            <div class="menu-item">
+               
+                <h3>Fajita Jalisco</h3>
+                <p class="description">A big burrito filled with beans, rice, and your favorite meat.</p>
+                <p class="price">$11.99</p>
+
+                <!-- Tortilla Selection -->
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn2" name="tortilla2" value="Corn">
+                <label for="corn2">Corn</label><br>
+                <input type="radio" id="flour2" name="tortilla2" value="Flour">
+                <label for="flour2">Flour</label><br>
+
+                <!-- Special Instructions -->
+                <textarea id="special-instructions-2" class="special-instructions" placeholder="Special instructions: e.g., No tomatoes, extra sour cream"></textarea>
+
+                <button class="add-to-cart" data-name="Fajita Jalisco" data-price="11.99" data-tortilla="tortilla2" data-instructions-id="special-instructions-2">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script>
+        // Function to handle adding items to the cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const tortillaGroup = button.getAttribute('data-tortilla');
+                const selectedTortilla = document.querySelector(`input[name="${tortillaGroup}"]:checked`);
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = document.getElementById(instructionsId).value.trim();
+                const addToCartButton = button;
+
+                // Check if tortilla is selected
+                if (!selectedTortilla) {
+                    // Add the shake effect if no tortilla is selected
+                    addToCartButton.classList.add('shake');
+                    setTimeout(() => {
+                        addToCartButton.classList.remove('shake');
+                    }, 500);
+                    alert("Please select a tortilla type (Corn or Flour).");
+                    return; // Stop if no tortilla is selected
+                }
+
+                const itemName = `${button.getAttribute('data-name')} with ${selectedTortilla.value} tortilla`;
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+
+                // Get the current cart from localStorage
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Check if the item with the same name and special instructions already exists in the cart
+                const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+                if (existingItem) {
+                    existingItem.quantity += 1; // Increase quantity if already exists
+                    existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+                } else {
+                    const item = {
+                        name: itemName,
+                        price: itemPrice,
+                        quantity: 1,
+                        totalPrice: itemPrice.toFixed(2),
+                        instructions: specialInstructions
+                    };
+                    cart.push(item);
+                }
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Show success message
+                showSuccessMessage(`${itemName} added to your cart!`);
+            });
+        });
+
+        // Function to show success message
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = message;
+            successMessage.style.display = 'block';
+
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000); // Hide message after 3 seconds
+        }
+    </script>
+
+</body>
+</html>

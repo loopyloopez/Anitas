@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="/anitas logo.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexican Restaurant</title>
+    <link rel="stylesheet" href="catigories.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .special-instructions {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #006341;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin-top: 10px;
+            resize: none;
+            transition: height 0.3s ease;
+        }
+
+        .special-instructions:focus {
+            height: 100px;
+            border-color: #ce1126;
+            outline: none;
+        }
+
+        #success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .shake {
+            animation: shake 0.5s;
+            animation-iteration-count: 1;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/anitas logo.png" class="logo"></img>
+        <div id="success-message">Item successfully added to cart!</div>
+        <h1>Anitas</h1>
+    
+        <a href="../cartpage.html" class="view-cart">
+            <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+        </a>
+    </header>
+
+    <section class="menu-section">
+        <h2>Dinner</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="/photos/fajitas.png" alt="Tacos">
+                <h3>Fajitas</h3>
+                <p class="description">All our Fajitas are served with Rice, Beans, Guacamole, Sour Cream, Pico de Gallo, and Tortillas.</p>
+                <p class="price">$17.99</p>
+                <textarea id="special-instructions-1" class="special-instructions" placeholder="Special instructions: e.g., No onions, extra cheese"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn1" name="tortilla1" value="Corn">
+                <label for="corn1">Corn</label><br>
+                <input type="radio" id="flour1" name="tortilla1" value="Flour">
+                <label for="flour1">Flour</label><br>
+                <button class="add-to-cart" data-name="shrimp Fajitas" data-price="17.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Shrimp</button>
+                <button class="add-to-cart" data-name="steak Fajitas" data-price="14.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Steak</button>
+                <button class="add-to-cart" data-name="pastor Fajitas" data-price="14.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Pastor</button>
+                <button class="add-to-cart" data-name="chicken Fajitas" data-price="14.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Chicken</button>
+                <button class="add-to-cart" data-name="veggie Fajitas" data-price="14.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Veggie</button>
+                <button class="add-to-cart" data-name="pork Fajitas" data-price="14.99" data-tortilla="tortilla1" data-instructions-id="special-instructions-1">Pork</button>
+            </div>
+
+            <div class="menu-item">
+              
+                <h3>Anitas Special</h3>
+                <p class="description">Grilled Steak, Chorizo (Mexican Sausage), Shrimp, Grilled Chicken, Beans, Rice, Pico de Gallo, Special Sauce, Sour Cream, Guacamole, and Tortillas.</p>
+                <p class="price">$17.99</p>
+                <textarea id="special-instructions-2" class="special-instructions" placeholder="Special instructions: e.g., Extra guacamole, no beans"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn2" name="tortilla2" value="Corn">
+                <label for="corn2">Corn</label><br>
+                <input type="radio" id="flour2" name="tortilla2" value="Flour">
+                <label for="flour2">Flour</label><br>
+                <button class="add-to-cart" data-name="Anitas Special" data-price="17.99" data-tortilla="tortilla2" data-instructions-id="special-instructions-2">Add to Cart</button>
+            </div>
+
+            <div class="menu-item">
+               
+                <h3>Jalisco Special</h3>
+                <p class="description">Marinated tender strips of Steak, Chicken, and Shrimp. Served with sautéed Onion, Bell Pepper, Tomato, Refried Beans, Mexican Rice, Salad, and Flour Tortillas.</p>
+                <p class="price">$16.99</p>
+                <textarea id="special-instructions-3" class="special-instructions" placeholder="Special instructions: e.g., No sour cream, extra veggies"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn3" name="tortilla3" value="Corn">
+                <label for="corn3">Corn</label><br>
+                <input type="radio" id="flour3" name="tortilla3" value="Flour">
+                <label for="flour3">Flour</label><br>
+                <button class="add-to-cart" data-name="Jalisco Special" data-price="16.99" data-tortilla="tortilla3" data-instructions-id="special-instructions-3">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                
+                <h3>Pina Fajita</h3>
+                <p class="description">Marinated tender strips of Steak, Chicken, and Shrimp, served with sautéed Onion, Bell Pepper, Tomato, and pieces of Pineapple. Served with Refried Beans, Mexican Rice, Salad, and Flour Tortillas.</p>
+                <p class="price">$16.99</p>
+                <textarea id="special-instructions-4" class="special-instructions" placeholder="Special instructions: e.g., No pineapple, extra salsa"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn4" name="tortilla4" value="Corn">
+                <label for="corn4">Corn</label><br>
+                <input type="radio" id="flour4" name="tortilla4" value="Flour">
+                <label for="flour4">Flour</label><br>
+                <button class="add-to-cart" data-name="Pina Fajita" data-price="16.99" data-tortilla="tortilla4" data-instructions-id="special-instructions-4">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+               
+                <h3>Fajitas Parrillada</h3>
+                <p class="description">Grilled Steak, Pastor, Chicken, Shrimp, and Fajita Vegetables. Served with Rice, Beans, and Salad.</p>
+                <p class="price">$18.99</p>
+                <textarea id="special-instructions-5" class="special-instructions" placeholder="Special instructions: e.g., Extra shrimp, no beans"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn5" name="tortilla5" value="Corn">
+                <label for="corn5">Corn</label><br>
+                <input type="radio" id="flour5" name="tortilla5" value="Flour">
+                <label for="flour5">Flour</label><br>
+                <button class="add-to-cart" data-name="Fajitas Parrillada" data-price="18.99" data-tortilla="tortilla5" data-instructions-id="special-instructions-5">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="/photos/taco lupe.png" alt="Tacos Lupe">
+                <h3>Tacos Lupe</h3>
+                <p class="description">Seasoned Steak sautéed with Bacon, Onion, and Poblano Pepper on Three Flour Tortillas. Topped with Cheese, Avocado, and Cilantro. Served with Rice and Beans.</p>
+                <p class="price">$11.99</p>
+                <textarea id="special-instructions-6" class="special-instructions" placeholder="Special instructions: e.g., No bacon, extra avocado"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn6" name="tortilla6" value="Corn">
+                <label for="corn6">Corn</label><br>
+                <input type="radio" id="flour6" name="tortilla6" value="Flour">
+                <label for="flour6">Flour</label><br>
+                <button class="add-to-cart" data-name="Tacos Lupe" data-price="11.99" data-tortilla="tortilla6" data-instructions-id="special-instructions-6">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="/photos/seafood fajita.png" alt="Seafood Fajitas">
+                <h3>Seafood Fajitas</h3>
+                <p class="description">Crab Meat, Shrimp, Fish, and Vegetables. Served with Rice, Beans, and Salad.</p>
+                <p class="price">$18.99</p>
+                <textarea id="special-instructions-7" class="special-instructions" placeholder="Special instructions: e.g., No crab meat, extra fish"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn7" name="tortilla7" value="Corn">
+                <label for="corn7">Corn</label><br>
+                <input type="radio" id="flour7" name="tortilla7" value="Flour">
+                <label for="flour7">Flour</label><br>
+                <button class="add-to-cart" data-name="Seafood Fajitas" data-price="18.99" data-tortilla="tortilla7" data-instructions-id="special-instructions-7">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+               
+                <h3>Fajita Fundida</h3>
+                <p class="description">Bed of rice topped with grilled chicken or steak, stuffed with onions and cheese on top. Served with tortillas.</p>
+                <p class="price">$13.99</p>
+                <textarea id="special-instructions-8" class="special-instructions" placeholder="Special instructions: e.g., No sour cream, extra salsa"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn8" name="tortilla8" value="Corn">
+                <label for="corn8">Corn</label><br>
+                <input type="radio" id="flour8" name="tortilla8" value="Flour">
+                <label for="flour8">Flour</label><br>
+                <button class="add-to-cart" data-name="Fajita Fundida" data-price="13.99" data-tortilla="tortilla8" data-instructions-id="special-instructions-8">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+              
+                <h3>Kenny Special</h3>
+                <p class="description">Thin sliced ribeye steak, onions, and jalapenos served with rice, beans, lettuce, tomato, and avocado.</p>
+                <p class="price">$16.99</p>
+                <textarea id="special-instructions-9" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra meat"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn9" name="tortilla9" value="Corn">
+                <label for="corn9">Corn</label><br>
+                <input type="radio" id="flour9" name="tortilla9" value="Flour">
+                <label for="flour9">Flour</label><br>
+                <button class="add-to-cart" data-name="Kenny Special" data-price="16.99" data-tortilla="tortilla9" data-instructions-id="special-instructions-9">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="/photos/molcajete.png" alt="Molcajete">
+                <h3>Molcajete</h3>
+                <p class="description">Grilled shrimp, chicken, steak, vegetables, and chorizo (Mexican sausage). Served with rice, beans, salad, and tortillas.</p>
+                <p class="price">$19.99</p>
+                <textarea id="special-instructions-10" class="special-instructions" placeholder="Special instructions: e.g., Extra cheese, no salsa"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn10" name="tortilla10" value="Corn">
+                <label for="corn10">Corn</label><br>
+                <input type="radio" id="flour10" name="tortilla10" value="Flour">
+                <label for="flour10">Flour</label><br>
+                <button class="add-to-cart" data-name="Molcajete" data-price="19.99" data-tortilla="tortilla10" data-instructions-id="special-instructions-10">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="/photos/fajia vip.png" alt="Fajita VIP">
+                <h3>Fajita VIP</h3>
+                <p class="description">Serves 2-3 people. 12oz ribeye fajitas with shrimp, steak, chicken, sausage, onions, bell peppers, and tomatoes. Served with rice, beans, and salad.</p>
+                <p class="price">$29.99</p>
+                <textarea id="special-instructions-11" class="special-instructions" placeholder="Special instructions: e.g., No rice, extra meat"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn11" name="tortilla11" value="Corn">
+                <label for="corn11">Corn</label><br>
+                <input type="radio" id="flour11" name="tortilla11" value="Flour">
+                <label for="flour11">Flour</label><br>
+                <button class="add-to-cart" data-name="Fajita VIP" data-price="29.99" data-tortilla="tortilla11" data-instructions-id="special-instructions-11">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="/photos/chile verde.png" alt="Chile Verde">
+                <h3>Chile Verde</h3>
+                <p class="description">Pork or steak chunks with green sauce. Served with rice, beans, and tortillas.</p>
+                <p class="price">$12.99</p>
+                <textarea id="special-instructions-12" class="special-instructions" placeholder="Special instructions: e.g., No onions, extra salsa"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn12" name="tortilla12" value="Corn">
+                <label for="corn12">Corn</label><br>
+                <input type="radio" id="flour12" name="tortilla12" value="Flour">
+                <label for="flour12">Flour</label><br>
+                <button class="add-to-cart" data-name="Chile Verde" data-price="12.99" data-tortilla="tortilla12" data-instructions-id="special-instructions-12">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+               
+                <h3>Chile Colorado</h3>
+                <p class="description">Grilled steak chunks with red sauce. Served with rice, beans, and tortillas.</p>
+                <p class="price">$12.99</p>
+                <textarea id="special-instructions-13" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra rice"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn13" name="tortilla13" value="Corn">
+                <label for="corn13">Corn</label><br>
+                <input type="radio" id="flour13" name="tortilla13" value="Flour">
+                <label for="flour13">Flour</label><br>
+                <button class="add-to-cart" data-name="Chile Colorado" data-price="12.99" data-tortilla="tortilla13" data-instructions-id="special-instructions-13">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                <img src="/photos/pin special.png" alt="Pin Special">
+                <h3>Pin Special</h3>
+                <p class="description">Combination of grilled shrimp, steak, and chicken, set on a bed of rice, topped with cheese sauce and grilled Jalapeno peppers.</p>
+                <p class="price">$14.99</p>
+                <textarea id="special-instructions-14" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra meat"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn14" name="tortilla14" value="Corn">
+                <label for="corn14">Corn</label><br>
+                <input type="radio" id="flour14" name="tortilla14" value="Flour">
+                <label for="flour14">Flour</label><br>
+                <button class="add-to-cart" data-name="Pin Special" data-price="14.99" data-tortilla="tortilla14" data-instructions-id="special-instructions-14">Add to Cart</button>
+            </div>
+            
+            <div class="menu-item">
+                
+                <h3>Tres Rancheros</h3>
+                <p class="description">Grilled steak, chicken, and ham with cheese sauce, served with rice, lettuce, guacamole, sour cream, and pico de gallo. Served with tortillas.</p>
+                <p class="price">$13.99</p>
+                <textarea id="special-instructions-15" class="special-instructions" placeholder="Special instructions: e.g., No beans, extra meat"></textarea>
+                <label>Choose your tortilla:</label><br>
+                <input type="radio" id="corn15" name="tortilla15" value="Corn">
+                <label for="corn15">Corn</label><br>
+                <input type="radio" id="flour15" name="tortilla15" value="Flour">
+                <label for="flour15">Flour</label><br>
+                <button class="add-to-cart" data-name="Tres Rancheros" data-price="13.99" data-tortilla="tortilla15" data-instructions-id="special-instructions-15">Add to Cart</button>
+            </div>
+            
+
+            <!-- More menu items... -->
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
+    </footer>
+
+    <script>
+        // Handle "Add to Cart" with tortilla validation and special instructions
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const tortillaGroup = button.getAttribute('data-tortilla');
+                const selectedTortilla = document.querySelector(`input[name="${tortillaGroup}"]:checked`);
+                const instructionsId = button.getAttribute('data-instructions-id');
+                const specialInstructions = document.getElementById(instructionsId).value.trim();
+                const addToCartButton = button;
+
+                // Check if tortilla is selected
+                if (!selectedTortilla) {
+                    // Add the shake effect if no tortilla is selected
+                    addToCartButton.classList.add('shake');
+                    setTimeout(() => {
+                        addToCartButton.classList.remove('shake');
+                    }, 500); // Remove the shake effect after 0.5s
+                    alert("Please select a tortilla type (Corn or Flour).");
+                    return; // Stop if no tortilla is selected
+                }
+
+                const itemName = `${button.getAttribute('data-name')} with ${selectedTortilla.value} tortilla`;
+                const itemPrice = parseFloat(button.getAttribute('data-price'));
+
+                // Get the current cart from localStorage
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Check if the item is already in the cart
+                const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
+
+                if (existingItem) {
+                    existingItem.quantity += 1; // Increase quantity if it already exists
+                    existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
+                } else {
+                    const item = {
+                        name: itemName,
+                        price: itemPrice,
+                        quantity: 1,
+                        totalPrice: itemPrice.toFixed(2),
+                        instructions: specialInstructions
+                    };
+                    cart.push(item);
+                }
+
+                // Save the updated cart back to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Alert the user
+                alert(`${itemName} added to your cart with instructions: "${specialInstructions}"`);
+            });
+        });
+    </script>
+
+</body>
+</html>
