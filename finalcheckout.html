@@ -8,30 +8,61 @@
     <link rel="stylesheet" href="finalcheckout.css">
     <script src="https://js.stripe.com/v3/"></script> <!-- Stripe API -->
     <style>
-        /* Make the form fields larger and responsive */
-        input[type="text"], input[type="email"] {
-            width: 100%; /* Make the input fields take up the full width of the form */
-            padding: 15px; /* Increase the padding for larger input fields */
-            margin-bottom: 20px; /* Add space between the fields */
-            font-size: 1.2em; /* Make the text larger */
-            border: 1px solid #ccc; /* Border around the fields */
-            border-radius: 5px; /* Slightly rounded corners */
-            box-sizing: border-box; /* Ensure padding doesn't affect the width */
+        /* General Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 20px;
+            margin: 0;
         }
-        #summary-details {
-            font-size: small;
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #8c2f39;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        /* Form Fields */
+        input[type="text"], input[type="email"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #f1f1f1;
+            color: #333;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus {
+            border-color: #8c2f39;
+            background-color: #fff;
         }
 
         button {
-            padding: 15px 30px; /* Increase button size */
+            padding: 15px 30px;
             font-size: 1.2em;
-            background-color: #8c2f39; /* Button color matching theme */
+            background-color: #8c2f39;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
             width: 100%;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
@@ -39,16 +70,17 @@
             color: #8c2f39;
         }
 
+        /* Checkout Section Styling */
         .checkout-section {
-            max-width: 600px; /* Limit form width for larger screens */
+            max-width: 600px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
         }
 
-        /* Style for each meal box */
+        /* Meal Box Styling */
         .meal-box {
             border: 1px solid #ddd;
             padding: 15px;
@@ -62,18 +94,57 @@
             margin: 5px 0;
         }
 
-        /* Responsive design for smaller screens */
+        /* Order Summary */
+        #order-summary p {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #order-summary {
+            margin-top: 20px;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        #order-summary p span {
+            float: right;
+            color: #8c2f39;
+        }
+
+        #summary-details {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive Design */
         @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
             .checkout-section {
-                padding: 10px;
+                padding: 15px;
             }
 
             input[type="text"], input[type="email"], button {
                 font-size: 1em;
+                padding: 10px;
             }
 
             .meal-box {
                 padding: 10px;
+            }
+
+            #order-summary p {
+                font-size: 1em;
             }
         }
     </style>
@@ -87,19 +158,32 @@
 
     <section class="checkout-section">
         <!-- Form to submit the order -->
-        <form action="https://formsubmit.co/anitasmexicanrestaurants@gmail.com" method="POST" id="order-form">
-         
+        <form action="https://formsubmit.co/anitasmexicanrestaurants@gmail.com" method="POST" id="order-form" onsubmit="return validateEmails()">
             <input type="text" name="name" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-
+            <input type="email" name="email" id="email" placeholder="Email Address" required>
+            <input type="email" name="confirmEmail" id="confirm-email" placeholder="Confirm Email Address" required>
+        
             <!-- Hidden fields to hold the order details -->
             <input type="hidden" name="orderDetails" id="order-details">
             <input type="hidden" name="totalPrice" id="total-price">
             <input type="hidden" name="_next" value="https://anitass.com/ordersent.html">
-
+        
             <button type="submit">Send Order</button>
         </form>
-
+        
+        <script>
+            function validateEmails() {
+                var email = document.getElementById("email").value;
+                var confirmEmail = document.getElementById("confirm-email").value;
+        
+                if (email !== confirmEmail) {
+                    alert("Email addresses do not match.");
+                    return false; // Prevent form submission
+                }
+                return true; // Allow form submission
+            }
+        </script>
+        
         <!-- Cart and order summary -->
         <h2>Order Summary <p id="summary-details">(please review order summary for accuracy)</p></h2>
         <div id="cart-summary"></div>
