@@ -205,7 +205,7 @@
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartSummaryDiv = document.getElementById('cart-summary');
         if (cart.length === 0) {
-            cartSummaryDiv.innerHTML = "EMPTY CART :("
+            cartSummaryDiv.innerHTML = "EMPTY CART"
             cartSummaryDiv.style.fontSize = "50px";
         }
 
