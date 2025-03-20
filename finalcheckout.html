@@ -211,7 +211,7 @@
 
         // Calculate the total price of items in the cart considering quantities
         let itemsTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        const tax = itemsTotal * 0.0725; 
+        const tax = itemsTotal * 0.075; 
         const orderTotal = itemsTotal + tax;
 
         // Update the order summary on the checkout page
