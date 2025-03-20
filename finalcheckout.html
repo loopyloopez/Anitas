@@ -185,7 +185,8 @@
         </script>
         
         <!-- Cart and order summary -->
-        <h2>Order Summary <p id="summary-details">(please review order summary for accuracy)</p></h2>
+        <h2 id="cart-sum">Order Summary:<p id="summary-details">(please review order summary for accuracy)</p></h2>
+        
         <div id="cart-summary"></div>
         <div id="order-summary">
             <p>Items Total: $<span id="items-total">0.00</span></p>
@@ -200,8 +201,13 @@
 
     <script>
         // Retrieve cart from localStorage
+        
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         const cartSummaryDiv = document.getElementById('cart-summary');
+        if (cart.length === 0) {
+            cartSummaryDiv.innerHTML = "EMPTY CART :("
+            cartSummaryDiv.style.fontSize = "50px";
+        }
 
         // Calculate the total price of items in the cart considering quantities
         let itemsTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
