@@ -320,8 +320,8 @@
     </footer>
 
     <script>
-        localStorage.removeItem('cart');
-        cart = [];
+        localStorage.clear();
+        sessionStorage.clear();
         // Select the opening hours element
         const openingHours = document.querySelector('.opening-hours');
     
