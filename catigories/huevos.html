@@ -106,9 +106,7 @@
         }
 
         // Function to display success message
-        function showSuccessMessage(message) {
-           alert("Item added");
-        }
+       
 
         // Function to add items to cart
         function addItemToCart(itemName, itemPrice, specialInstructions = '') {
@@ -141,6 +139,7 @@
                 const specialInstructions = instructionsId ? document.getElementById(instructionsId).value.trim() : '';
 
                 addItemToCart(itemName, itemPrice, specialInstructions);
+                alert("Item added");
 
                 // Show success message
                 
