@@ -84,44 +84,6 @@
         <p>© 2024 Anitas | Contact: (316) 321-1301 | Address: 2529 W Central Ave, El Dorado, KS 67042</p>
     </footer>
 
-    <script>
-        // Handle "Add to Cart" with special instructions
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', () => {
-                const itemName = button.getAttribute('data-name');
-                const itemPrice = parseFloat(button.getAttribute('data-price'));
-                const instructionsId = button.getAttribute('data-instructions-id');
-                const specialInstructions = document.getElementById(instructionsId).value.trim();
-
-                // Get the current cart from localStorage
-                let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-                // Check if the item with the same name and special instructions already exists in the cart
-                const existingItem = cart.find(item => item.name === itemName && item.instructions === specialInstructions);
-
-                if (existingItem) {
-                    existingItem.quantity += 1; // Increase quantity if already exists
-                    existingItem.totalPrice = (existingItem.quantity * existingItem.price).toFixed(2);
-                } else {
-                    const item = {
-                        name: itemName,
-                        price: itemPrice,
-                        quantity: 1,
-                        totalPrice: itemPrice.toFixed(2),
-                        instructions: specialInstructions
-                    };
-                    cart.push(item);
-                }
-
-                // Save the updated cart back to localStorage
-                localStorage.setItem('cart', JSON.stringify(cart));
-
-                // Show success message
-                alert(`${itemName} added to your cart with instructions: "${specialInstructions}"`);
-            });
-        });
-    </script>
-
     <script src="../shop.js"></script>
 </body>
 </html>

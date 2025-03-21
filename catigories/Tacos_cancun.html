@@ -264,7 +264,13 @@
 
         // Function to show success message
         function showSuccessMessage(message) {
-            alert("sucessfully added!");
+            const successMessage = document.getElementById('success-message');
+            successMessage.textContent = "Item Added!";
+            successMessage.classList.add('show');
+
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 3000);
         }
 
         // Function to update cart in localStorage

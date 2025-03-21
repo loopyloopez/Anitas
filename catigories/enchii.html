@@ -162,20 +162,12 @@
                 localStorage.setItem('cart', JSON.stringify(cart));
 
                 // Show success message
-                showSuccessMessage(`${itemName} added to your cart with instructions: "${specialInstructions}"`);
+              
             });
         });
 
         // Function to show success message
-        function showSuccessMessage(message) {
-            const successMessage = document.getElementById('success-message');
-            successMessage.textContent = message;
-            successMessage.style.display = 'block';
-
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 3000); // Hide message after 3 seconds
-        }
+       
     </script>
 
     <script src="../shop.js"></script>

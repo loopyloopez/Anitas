@@ -118,14 +118,7 @@
 
         // Function to display success message
         function showSuccessMessage(message) {
-            const successMessage = document.getElementById('success-message');
-            successMessage.textContent = message;
-            successMessage.style.display = 'block';
-
-            // Hide message after 3 seconds
-            setTimeout(() => {
-                successMessage.style.display = 'none';
-            }, 3000);
+            alert("Item added!");
         }
 
         // Function to add items to cart
