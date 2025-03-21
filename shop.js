@@ -8,14 +8,7 @@ function updateCart() {
 
 // Function to display success message
 function showSuccessMessage(message) {
-    const successMessage = document.getElementById('success-message');
-    successMessage.textContent = message;
-    successMessage.classList.add('show');
-
-    // Hide the message after 3 seconds
-    setTimeout(() => {
-        successMessage.classList.remove('show');
-    }, 3000);
+    alert("Item added!");
 }
 
 // Function to add item to cart
