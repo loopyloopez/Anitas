@@ -8,6 +8,11 @@
 .options {
     color: red;
 }
+.LP{
+    color: blue;
+    font-size: 15px;
+    padding-bottom: 20px;
+}
 
 .description {
     font-size: 1rem;
