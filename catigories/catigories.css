@@ -71,6 +71,7 @@ header .view-cart {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Shadow for buttons */
 }
 
+
 header .view-cart:hover {
     background-color: #006341; /* Green on hover */
     color: white;

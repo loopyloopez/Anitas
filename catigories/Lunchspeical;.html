@@ -38,6 +38,14 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             display: none;
         }
+        .blocked{
+            background-color: gray;
+            font-weight: bold;
+            color:black;
+            border-width: 10px;
+            border-radius: 6%;
+        }
+        
     </style>
 </head>
 <body>
@@ -65,6 +73,9 @@
                 <button class="add-to-cart exclusive" data-name="#3 One Bean Burrito, Cheese Enchiladas, and Rice" data-price="8.99">#3 One Bean Burrito, Cheese Enchiladas, and Rice</button>
                 <button class="add-to-cart exclusive" data-name="#4 One Beef Enchilada, One Taco, Rice, and Beans" data-price="8.99">#4 One Beef Enchilada, One Taco, Rice, and Beans</button>
                 <button class="add-to-cart exclusive" data-name="#5 Two Beef Enchiladas, Rice, and Beans" data-price="8.99">#5 Two Beef Enchiladas, Rice, and Beans</button>
+
+                <div class="blocked">Lunch only</div>
+               
             </div>
 
             <div class="menu-item">
@@ -74,6 +85,7 @@
                 <p class="price">$8.99</p>
                 <textarea id="instructions-2" class="special-instructions" placeholder="Special instructions: No onions, extra cheese..."></textarea>
                 <button class="add-to-cart exclusive" data-name="Chimi Enchiladas" data-price="8.99" data-instructions-id="instructions-2">Add to Cart</button>
+                <div class="blocked">Lunch only</div>
             </div>
 
             <div class="menu-item">
@@ -84,6 +96,7 @@
                 <textarea id="instructions-3" class="special-instructions" placeholder="Special instructions: No onions, extra cheese..."></textarea>
                 <button class="add-to-cart exclusive" data-name="Jumbo Burrito/chicken" data-price="8.99" data-instructions-id="instructions-3">Chicken</button>
                 <button class="add-to-cart exclusive" data-name="Jumbo Burrito/beef" data-price="8.99" data-instructions-id="instructions-3">Beef</button>
+                <div class="blocked">Lunch only</div>
             </div>
         </div>
     </section>
