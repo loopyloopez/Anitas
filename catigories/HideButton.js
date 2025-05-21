@@ -7,7 +7,7 @@ const day = now.getDay();
 
 if(day<=5){
     
-    if(time < 11 || time > 15){
+    if(time < 11 || time > 14){
         for(i=0;i<buttons.length;i++){
             buttons[i].style.display="none"
         }
