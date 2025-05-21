@@ -76,6 +76,12 @@ header .view-cart:hover {
     color: white;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
 }
+.lunchstyle{
+    
+    color: green;
+    
+
+}
 
 /* Menu Section */
 .menu-section {
