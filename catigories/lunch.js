@@ -44,7 +44,7 @@ disablelunchprices();
 
 if(day<=5){
     
-    if(time > 0 && time < 15){
+    if(time > 11 && time < 15){
         enablelunchprices();
         
 
